@@ -6,7 +6,6 @@ phases:
       nodejs: 14 # ou a versão que você precisar
     commands:
       - echo Iniciando a fase de instalação
-      - npm install
   pre_build:
     commands:
       - echo Iniciando a fase de pré-construção
@@ -20,7 +19,6 @@ phases:
     commands:
       - echo Iniciando a fase de pós-construção
       - docker-compose ps
-      - aws elasticbeanstalk update-environment --application-name "crud-git" --version-label "versao_nova" --environment-name "Crud-git-env"
 
 artifacts:
   files:
