@@ -1,10 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    APPLICATION_NAME: "crud-git"
-    ENVIRONMENT_NAME: "Crud-git-env"
-
 phases:
   install:
     runtime-versions:
@@ -20,15 +15,11 @@ phases:
   build:
     commands:
       - echo Iniciando a fase de construção
-      - export APP_VERSION=$(jq -r '.version' package.json)
-      - export EB_VERSION=$APP_VERSION'-'$(date +%s)
       - docker-compose up -d --build
   post_build:
     commands:
       - echo Iniciando a fase de pós-construção
       - docker-compose ps
-      - aws elasticbeanstalk create-application-version --application-name "$APPLICATION_NAME" --version-label "$EB_VERSION" --source-bundle S3Bucket=$APPLICATION_NAME,S3Key=build.zip
-      - aws elasticbeanstalk update-environment --application-name "$APPLICATION_NAME" --version-label "$EB_VERSION" --environment-name "$ENVIRONMENT_NAME"
 
 artifacts:
   files:
