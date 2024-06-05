@@ -1,6 +1,6 @@
 {
   "name": "crud",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A simple CRUD application with Node.js, Express, and PostgreSQL",
   "main": "server.js",
   "scripts": {
