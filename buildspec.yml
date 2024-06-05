@@ -20,6 +20,7 @@ phases:
     commands:
       - echo Iniciando a fase de pós-construção
       - docker-compose ps
+      - aws elasticbeanstalk update-environment --application-name "crud-git" --version-label "versao_nova" --environment-name "Crud-git-env"
 
 artifacts:
   files:
